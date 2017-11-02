@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour {
     public Camera myCamera;
     public Text LeftButtonText;
     public Text RightButtonText;
+    public TextMesh ClientTextMesh;
+    public TextMesh PlayerTextMesh;
 
     [Header("Client Statements")]
     [TextArea(2, 10)]
@@ -40,6 +42,8 @@ public class GameManager : MonoBehaviour {
     private int currentQuestion; //Keep track of which questions
     private int goodAnswers; //Count Good Answers
     private int badAnswers; //Count Bad Answers
+    private int currentClient;//keep track of client statements
+    private int currentPlayer;//keep track of player statements
 
     private Rect leftAnswerRect;  //a rect we'll set to the bounds of the left answer
     private Rect rightAnswerRect;  //a rect we'll set to the bounds of the right answer
@@ -51,8 +55,11 @@ public class GameManager : MonoBehaviour {
     //public BoxCollider buttonColliderRight;
 
 
-      
 
+    private void Awake()
+    {
+        
+    }
 
 
 
@@ -70,12 +77,20 @@ public class GameManager : MonoBehaviour {
             i++;
         }
         currentQuestion = 0; //set current question to 0
+        currentClient = 0;
+        currentPlayer = 0;
+         
         QuestionTextMesh.text = Questions[currentQuestion]; //set the starting values for question text mesh
         AnswerLeftTextMesh.text = Answers1[currentQuestion]; //set the starting values for left answer text mesh
         AnswerRightTextMesh.text = Answers2[currentQuestion]; //set the starting values for right answer text mesh
+        ClientTextMesh.text = Client[currentClient];
+        PlayerTextMesh.text = Player[currentClient];
 
         leftRend = AnswerLeftTextMesh.GetComponent<Renderer>(); //set the renderers
         rightRend = AnswerRightTextMesh.GetComponent<Renderer>();
+
+        LeftButtonText.text = Answers1[0];
+        RightButtonText.text = Answers2[0];
 
     }
 	
@@ -87,6 +102,12 @@ public class GameManager : MonoBehaviour {
     {
         Debug.Log("Button " + buttonNum + " clicked");
         Debug.Log(currentQuestion);
+
+
+
+
+
+
 
         if (currentQuestion >= 6) //Now all questions answered, so it's time to give a result (no matter what we clicked)
         {
