@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [ExecuteInEditMode]
 public class GameManager : MonoBehaviour {
@@ -11,12 +12,14 @@ public class GameManager : MonoBehaviour {
     public TextMesh AnswerLeftTextMesh;
     public TextMesh AnswerRightTextMesh;
     public Camera myCamera;
+    public Text LeftButtonText;
+    public Text RightButtonText;
 
-    [Header("Client Statements")]//list of statements by the client
+    [Header("Client Statements")]
     [TextArea(2, 10)]
     public List<string> Client;//list of statements by the client
 
-    [Header("Player Statments")]
+    [Header("Player Statements")]
     [TextArea(2, 10)]
     public List<string> Player;// list of statements by the player
 
@@ -48,6 +51,7 @@ public class GameManager : MonoBehaviour {
     //public BoxCollider buttonColliderRight;
 
 
+      
 
 
 
@@ -82,6 +86,7 @@ public class GameManager : MonoBehaviour {
     public void ButtonClicked(int buttonNum)
     {
         Debug.Log("Button " + buttonNum + " clicked");
+        Debug.Log(currentQuestion);
 
         if (currentQuestion >= 6) //Now all questions answered, so it's time to give a result (no matter what we clicked)
         {
@@ -106,7 +111,8 @@ public class GameManager : MonoBehaviour {
                 //all of these are the same, we set a new cat sprite, then add one to goodAnswers or badAnswers accordingly
                 if (currentQuestion == 0)
                 {
-                    
+                    LeftButtonText.text = Answers1[0];
+                    RightButtonText.text = Answers2[0];
                     goodAnswers++; //add one to good answers
                 }
                 else if (currentQuestion == 1)
