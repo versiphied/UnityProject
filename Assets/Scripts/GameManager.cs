@@ -8,14 +8,13 @@ public class GameManager : MonoBehaviour {
 
     [Header("Components")] //Created Header for the component section in unity
     [Space(10)]
-    public TextMesh QuestionTextMesh; //text mesh for questions and answers
-    public TextMesh AnswerLeftTextMesh;
-    public TextMesh AnswerRightTextMesh;
+    public Text ClientTextMesh; //text mesh for questions and answers
+    public Text AnswerLeftTextMesh;
+    public Text AnswerRightTextMesh;
     public Camera myCamera;
-    public Text LeftButtonText;
-    public Text RightButtonText;
-    public TextMesh ClientTextMesh;
-    public TextMesh PlayerTextMesh;
+    //public Text LeftButtonText;
+    //public Text RightButtonText;
+    public Text PlayerTextMesh;
 
     [Header("Client Statements")]
     [TextArea(2, 10)]
@@ -80,7 +79,7 @@ public class GameManager : MonoBehaviour {
         currentClient = 0;
         currentPlayer = 0;
          
-        QuestionTextMesh.text = Questions[currentQuestion]; //set the starting values for question text mesh
+        ClientTextMesh.text = Questions[currentQuestion]; //set the starting values for question text mesh
         AnswerLeftTextMesh.text = Answers1[currentQuestion]; //set the starting values for left answer text mesh
         AnswerRightTextMesh.text = Answers2[currentQuestion]; //set the starting values for right answer text mesh
         ClientTextMesh.text = Client[currentClient];
@@ -89,8 +88,8 @@ public class GameManager : MonoBehaviour {
         leftRend = AnswerLeftTextMesh.GetComponent<Renderer>(); //set the renderers
         rightRend = AnswerRightTextMesh.GetComponent<Renderer>();
 
-        LeftButtonText.text = Answers1[0];
-        RightButtonText.text = Answers2[0];
+        //LeftButtonText.text = Answers1[0];
+        //RightButtonText.text = Answers2[0];
 
     }
 	
@@ -132,8 +131,8 @@ public class GameManager : MonoBehaviour {
                 //all of these are the same, we set a new cat sprite, then add one to goodAnswers or badAnswers accordingly
                 if (currentQuestion == 0)
                 {
-                    LeftButtonText.text = Answers1[0];
-                    RightButtonText.text = Answers2[0];
+                    AnswerLeftTextMesh.text = Answers1[0];
+                    AnswerRightTextMesh.text = Answers2[0];
                     goodAnswers++; //add one to good answers
                 }
                 else if (currentQuestion == 1)
@@ -209,14 +208,14 @@ public class GameManager : MonoBehaviour {
             }
 
             currentQuestion++; //moving on to the next question
-            QuestionTextMesh.text = Questions[currentQuestion]; //setting the text mesh to the next question
+            ClientTextMesh.text = Questions[currentQuestion]; //setting the text mesh to the next question
             AnswerLeftTextMesh.text = Answers1[currentQuestion]; //setting the text mesh to the next answer
             AnswerRightTextMesh.text = Answers2[currentQuestion]; //setting the text mesh to the next answer
 
 
             //update button size
-            Vector3 newSizeLeft = AnswerLeftTextMesh.GetComponent<MeshRenderer>().bounds.size;
-            Vector3 newSizeRight = AnswerRightTextMesh.GetComponent<MeshRenderer>().bounds.size;
+            //Vector3 newSizeLeft = AnswerLeftTextMesh.GetComponent<MeshRenderer>().bounds.size;
+            //Vector3 newSizeRight = AnswerRightTextMesh.GetComponent<MeshRenderer>().bounds.size;
 
             //buttonColliderLeft.size = newSizeLeft;
             //buttonColliderRight.size = newSizeRight;
