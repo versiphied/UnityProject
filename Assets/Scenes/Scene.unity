@@ -1249,28 +1249,72 @@ MonoBehaviour:
   myCamera: {fileID: 1797103013}
   PlayerTextMesh: {fileID: 791803314}
   Client:
-  - circle
-  - 
-  - 
+  - Thanks for all of your help, ____ we wouldn't be together if it wasn't for you.
+  - '*Knock Knock*'
+  - Thanks for seeing us in such short notice, __
+  - We want to get stapled...
+  - No, no, no. We want to be stapled together!
+  - Ugh. I thought you wouldve been more cool about this. We'll just go to the paper
+    clip down the hall instead.
+  - No, no, no. We want to be stapled together!
+  - No, no, no. We want to be stapled together!
+  - No, no, no. We want to be stapled together!
+  - No, no, no. We want to be stapled together!
   Player:
-  - apple
-  - 
+  - Anytime, my children. May Naples Staples keep your bonds strong.
+  - Come in, my office appliance children.
+  - No problem. What can I help you with?
+  - Ahhh you want me to find some good paper to bind you to. Don't be ashamed, I get
+    requests like this all the time.
   - 
   - 
   Questions:
-  - element 0
-  - element 1
+  - 
+  - 
   - element 2
   - fwefwe
+  - fwefwe
+  - fwefwe
+  - fwefwe
+  - fwefwe
+  - fwefwe
+  - fwefwe
+  - fwefwe
+  - fwefwe
+  - fwefwe
+  - fwefwe
+  - fwefwe
+  - fwefwe
+  - fwefwe
+  - fwefwe
+  - fwefwe
+  - fwefwe
   Answers1:
-  - element 1
+  - Sweet Christmas!
   - element 2
   - gergregreg
   - hethreherhg
+  - hethreherhg
   Answers2:
-  - element 1
+  - 
   - element 2
   - erytert
+  - t34t34t34
+  - t34t34t34
+  - t34t34t34
+  - t34t34t34
+  - t34t34t34
+  - t34t34t34
+  - t34t34t34
+  - t34t34t34
+  - t34t34t34
+  - t34t34t34
+  - t34t34t34
+  - t34t34t34
+  - t34t34t34
+  - t34t34t34
+  - t34t34t34
+  - t34t34t34
   - t34t34t34
 --- !u!1 &1616662225
 GameObject:
