@@ -8,13 +8,15 @@ public class GameManager : MonoBehaviour {
 
     [Header("Components")] //Created Header for the component section in unity
     [Space(10)]
-    public Text ClientTextMesh; //text mesh for questions and answers
+    public Text ClientText; //text mesh for questions and answers
     public Text AnswerLeftTextMesh;
     public Text AnswerRightTextMesh;
     public Camera myCamera;
     //public Text LeftButtonText;
     //public Text RightButtonText;
-    public Text PlayerTextMesh;
+    public Text PlayerText;
+    public Button leftButton;
+    public Button rightButton;
 
     [Header("Client Statements")]
     [TextArea(2, 10)]
@@ -43,6 +45,7 @@ public class GameManager : MonoBehaviour {
     private int badAnswers; //Count Bad Answers
     private int currentClient;//keep track of client statements
     private int currentPlayer;//keep track of player statements
+    private bool choicesActive;
 
     private Rect leftAnswerRect;  //a rect we'll set to the bounds of the left answer
     private Rect rightAnswerRect;  //a rect we'll set to the bounds of the right answer
@@ -79,11 +82,11 @@ public class GameManager : MonoBehaviour {
         currentClient = 0;
         currentPlayer = 0;
          
-        ClientTextMesh.text = Questions[currentQuestion]; //set the starting values for question text mesh
+        ClientText.text = Questions[currentQuestion]; //set the starting values for question text mesh
         AnswerLeftTextMesh.text = Answers1[currentQuestion]; //set the starting values for left answer text mesh
         AnswerRightTextMesh.text = Answers2[currentQuestion]; //set the starting values for right answer text mesh
-        ClientTextMesh.text = Client[currentClient];
-        PlayerTextMesh.text = Player[currentClient];
+        ClientText.text = Client[currentClient];
+        PlayerText.text = Player[currentPlayer];
 
         leftRend = AnswerLeftTextMesh.GetComponent<Renderer>(); //set the renderers
         rightRend = AnswerRightTextMesh.GetComponent<Renderer>();
@@ -95,31 +98,49 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if(!choicesActive && Input.GetMouseButtonDown(0)){
+
+            
+        }	
 	}
+    void AdvanceText()
+    {
+        currentPlayer += 1;
+        currentQuestion += 1;
+        PlayerText.text = Player[currentPlayer];
+        ClientText.text = Client[currentClient];
+        //set buttons active
+        choicesActive = true;
+        // enable/set active buttons
+        leftButton.gameObject.SetActive(true);
+        rightButton.gameObject.SetActive(true);
+    }
+
     public void ButtonClicked(int buttonNum)
     {
         Debug.Log("Button " + buttonNum + " clicked");
         Debug.Log(currentQuestion);
+        choicesActive = false;
+        leftButton.gameObject.SetActive(false);
+        rightButton.gameObject.SetActive(false);
 
 
 
 
 
 
-
-        if (currentQuestion >= 6) //Now all questions answered, so it's time to give a result (no matter what we clicked)
+        if (currentQuestion >= 20) //Now all questions answered, so it's time to give a result (no matter what we clicked)
         {
             AnswerLeftTextMesh.text = ""; //set answer to blank
             AnswerRightTextMesh.text = ""; //set answer to blank
             if (goodAnswers > badAnswers) //if more good answers than bad
             {
-                AnswerLeftTextMesh.text = "(I have to survive out here) Sure."; //Cat wants to live with you
+                AnswerLeftTextMesh.text = "(Time to void my warranty) Well let's do this!"; 
                 
             }
             else
             {
-                AnswerRightTextMesh.text = "You don't seem to understand "; //Cat can't live with you
+                AnswerRightTextMesh.text = "My staplecratic oath tellls me to help! "; 
                 
             }
         }
@@ -169,10 +190,9 @@ public class GameManager : MonoBehaviour {
             //Answer is Right Answer, as the user clicked on a point that is within the right answer rect
             else if (buttonNum == 1)
             {
-                //all of these are the same, we set a new cat sprite, then add one to goodAnswers or badAnswers accordingly
                 if (currentQuestion == 0)
                 {
-                    //set the cat sprite
+                    
                     badAnswers++; //add one to good answers
                 }
                 if (currentQuestion == 1)
@@ -208,10 +228,10 @@ public class GameManager : MonoBehaviour {
             }
 
             currentQuestion++; //moving on to the next question
-            ClientTextMesh.text = Questions[currentQuestion]; //setting the text mesh to the next question
+            ClientText.text = Client[currentClient]; //setting the text mesh to the next question
             AnswerLeftTextMesh.text = Answers1[currentQuestion]; //setting the text mesh to the next answer
             AnswerRightTextMesh.text = Answers2[currentQuestion]; //setting the text mesh to the next answer
-
+            PlayerText.text = Player[currentPlayer];
 
             //update button size
             //Vector3 newSizeLeft = AnswerLeftTextMesh.GetComponent<MeshRenderer>().bounds.size;
